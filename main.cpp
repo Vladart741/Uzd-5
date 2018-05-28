@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <gtest/gtest.h>
 
 struct parametrai
 {
@@ -14,7 +15,23 @@ struct parametrai
 void remove(std::string& str, char character);
 std::vector<int> eilutes_nustatymas(std::string str);
 
-int main()
+TEST(parametrai, kiekio_testas)
+{
+	std::map<std::string, parametrai> test;
+	test["test key"].kiek= 10;
+
+	EXPECT_EQ(10, test["test key"].kiek);
+}
+
+TEST(parametrai, eilutes_testas)
+{
+	std::map<std::string, parametrai> test;
+	test["test key"].eil.push_back(10);
+
+	EXPECT_EQ(10, test["test key"].eil[0]);
+}
+
+int main(int argc, char* argv[])
 {
 	std::vector<char>simboliai;
 	{
@@ -61,6 +78,8 @@ int main()
 			remove(zodis, simboliai[i]);
 		}
 
+		std::transform(zodis.begin(), zodis.end(), zodis.begin(), ::toupper); // Konvertina visus simbolius i upper
+
 		if (duom.find(zodis) != duom.end())
 		{
 			duom[zodis].kiek++;
@@ -87,15 +106,21 @@ int main()
 			fr << std::endl;
 		}
 	}
+	testing::InitGoogleTest(&argc, argv);
+	return RUN_ALL_TESTS();
 	system("pause");
+	
 	return 0;
 }
 
 void remove(std::string& str, char character)
 {
- size_t pos;
- while( (pos=str.find(character)) != std::string::npos )
-      str.erase(pos, 1);
+	//Pasalina simbolius
+	 size_t pos;
+	 while ((pos = str.find(character)) != std::string::npos)
+	 {
+		 str.erase(pos, 1);	
+	 }
 
 }
 std::vector<int> eilutes_nustatymas(std::string str)
