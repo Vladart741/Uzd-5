@@ -18,17 +18,17 @@ std::vector<int> eilutes_nustatymas(std::string str);
 TEST(parametrai, kiekio_testas)
 {
 	std::map<std::string, parametrai> test;
-	test["test key"].kiek= 10;
+	test["test"].kiek= 10;
 
-	EXPECT_EQ(10, test["test key"].kiek);
+	EXPECT_EQ(10, test["test"].kiek);
 }
 
 TEST(parametrai, eilutes_testas)
 {
 	std::map<std::string, parametrai> test;
-	test["test key"].eil.push_back(10);
+	test["test"].eil.push_back(10);
 
-	EXPECT_EQ(10, test["test key"].eil[0]);
+	EXPECT_EQ(10, test["test"].eil[0]);
 }
 
 int main(int argc, char* argv[])
@@ -107,6 +107,8 @@ int main(int argc, char* argv[])
 		}
 	}
 	testing::InitGoogleTest(&argc, argv);
+
+	
 	return RUN_ALL_TESTS();
 	system("pause");
 	
@@ -131,6 +133,7 @@ std::vector<int> eilutes_nustatymas(std::string str)
 	int eilute = 1;
 	while (std::getline(fd, zodis))
 	{
+		std::transform(zodis.begin(), zodis.end(), zodis.begin(), ::toupper);
 		if (zodis.find(str) != std::string::npos) {
 			eil.push_back(eilute);
 		}
