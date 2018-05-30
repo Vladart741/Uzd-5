@@ -38,7 +38,7 @@ void remove(std::string& str, char character)
 ```c++
 std::transform(zodis.begin(), zodis.end(), zodis.begin(), ::toupper);
 ```
-#### 4) Įrasom string'ą i map'ą
+#### 4) Įrašom string'ą i map'ą
 #### 5) Nustatome, kiek kartų string'as pasikartoja tekste
 ```c++
 if (duom.find(zodis) != duom.end())
