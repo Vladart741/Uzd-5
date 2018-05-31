@@ -3,7 +3,7 @@
 ![image](https://user-images.githubusercontent.com/12825358/40751041-2b347a6a-6472-11e8-950a-a02e5462331b.png)
 
 ## Rezultatų failas
-![image](https://user-images.githubusercontent.com/12825358/40751004-08aa7c56-6472-11e8-85e5-ca4bd2157ddc.png)
+![image](https://user-images.githubusercontent.com/12825358/40770680-122e4990-64c4-11e8-9712-326151ac4518.png)
 
 ## Fun things
 ### Naudojamas map'as:
@@ -44,7 +44,6 @@ std::transform(zodis.begin(), zodis.end(), zodis.begin(), ::toupper);
 if (duom.find(zodis) != duom.end())
 		{
 			duom[zodis].kiek++;
-			duom[zodis].eil = eilutes_nustatymas(zodis);
 		}
 		else
 		{
@@ -59,6 +58,7 @@ std::vector<int> eilutes_nustatymas(std::string str)
 	std::string zodis;
 	std::vector<int>eil;
 	int eilute = 1;
+	str = " " + str + " ";
 	while (std::getline(fd, zodis))
 	{
 		std::transform(zodis.begin(), zodis.end(), zodis.begin(), ::toupper);
