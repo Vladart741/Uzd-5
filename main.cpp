@@ -83,7 +83,7 @@ int main(int argc, char* argv[])
 		if (duom.find(zodis) != duom.end())
 		{
 			duom[zodis].kiek++;
-			duom[zodis].eil = eilutes_nustatymas(zodis);
+			//duom[zodis].eil = eilutes_nustatymas(zodis);
 		}
 		else
 		{
@@ -96,6 +96,8 @@ int main(int argc, char* argv[])
 	std::ofstream fr("rez.txt");
 	for (auto i : duom)
 	{
+		i.second.eil = eilutes_nustatymas(i.first);
+
 		if (i.second.kiek > 1)
 		{
 			fr << "Zodis " <<"["<< i.first<<"]" << " pasikartoja " << i.second.kiek << " kartu siose eilutese: ";
@@ -131,6 +133,7 @@ std::vector<int> eilutes_nustatymas(std::string str)
 	std::string zodis;
 	std::vector<int>eil;
 	int eilute = 1;
+	str = " " + str + " ";
 	while (std::getline(fd, zodis))
 	{
 		std::transform(zodis.begin(), zodis.end(), zodis.begin(), ::toupper);
